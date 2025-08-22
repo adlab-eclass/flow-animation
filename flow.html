@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thermofluid Flow over External Magnetic Field (B)</title>
+  <style>
+    :root { --bg:#0b0b0f; --fg:#e8e8ea; --muted:#9aa0a6; }
+    * { box-sizing: border-box; }
+    body { margin:0; background:var(--bg); color:var(--fg); font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji"; }
+    .wrap { max-width:1100px; margin:24px auto; padding:16px; }
+    h1 { font-size:18px; font-weight:600; margin:0 0 10px 0; }
+    .panel { display:flex; gap:16px; align-items:center; flex-wrap:wrap; margin-bottom:10px; }
+    .panel label { font-size:14px; color:var(--muted); }
+    .panel input[type="range"] { width:260px; }
+    .stage { position:relative; background:#fff; border-radius:10px; box-shadow: 0 6px 30px rgba(0,0,0,.25); padding:18px 18px 12px 56px; }
+    canvas { display:block; width:100%; height:auto; border-radius:8px; }
+    .axis-label { position:absolute; left:6px; top:50%; transform: translateY(-50%) rotate(-90deg); transform-origin:left top; font-size:14px; color:#111; }
+    .b-badge { position:absolute; left:14px; top:14px; background:#111; color:#fff; padding:4px 8px; border-radius:6px; font-weight:600; font-size:12px; letter-spacing:.2px; }
+    .legend { display:flex; gap:6px; align-items:center; margin-top:8px; font-size:12px; color:var(--muted); }
+    .chip { width:26px; height:10px; border-radius:3px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Thermofluid stream over an externally applied magnetic field</h1>
+    <div class="panel">
+      <label>Magnetic field strength B (Gauss): <b id="bVal">1200</b></label>
+      <input id="bSlider" type="range" min="0" max="2000" step="10" value="1200" />
+      <label>Streamlines: <b id="nSeeds">80</b></label>
+      <input id="seedSlider" type="range" min="20" max="160" step="5" value="80" />
+      <label>Vectors</label>
+      <input id="vecToggle" type="checkbox" checked />
+    </div>
+
+    <div class="stage">
+      <div class="axis-label">y / H</div>
+      <div class="b-badge" id="bBadge">B = 1200 G</div>
+      <canvas id="cv" width="1000" height="260" aria-label="flow field"></canvas>
+      <div class="legend">
+        <span class="chip" style="background:#1f4fff"></span>
+        <span>low | |</span>
+        <span class="chip" style="background:#39b54a"></span>
+        <span>| |</span>
+        <span class="chip" style="background:#ffe23a"></span>
+        <span>high velocity magnitude</span>
+      </div>
+    </div>
+    <p style="color:var(--muted);font-size:12px;margin-top:8px;">Domain: 0 ≤ x/H ≤ 10, 0 ≤ y/H ≤ 1 (aspect preserved). Colors show |V|. Black arrows show local velocity direction. Blue bars indicate the external magnet poles and the red insert marks the energized core, visually matching your reference figure. This is a qualitative visual model (not CFD).</p>
+  </div>
+
+  <script>
+    // The entire JavaScript code from previous step goes here
+  </script>
+</body>
+</html>
